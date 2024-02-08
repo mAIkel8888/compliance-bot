@@ -1,40 +1,34 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
+import numpy as np
 
-"""
-# Welcome to Streamlit!
+# App title
+st.title('Ammonia Decomposition to Hydrogen Calculator')
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# User input for the amount of ammonia
+amount_nh3 = st.number_input('Enter the amount of NH3 (in moles):', min_value=0.0, value=1.0)
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Stoichiometry calculations
+amount_h2 = 3 * amount_nh3  # 2 NH3 produces 3 H2
+amount_n2 = 0.5 * amount_nh3  # 2 NH3 produces 1 N2
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+# Display the calculated amounts
+st.write(f"Amount of H2 produced: {amount_h2} moles")
+st.write(f"Amount of N2 produced: {amount_n2} moles")
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+# Visualizing the reaction
+fig, ax = plt.subplots()
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
+# Bar chart for reactants and products
+reactants = ['NH3']
+products = ['H2', 'N2']
+amounts = [amount_nh3, amount_h2, amount_n2]
 
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
+ax.bar(reactants, [amount_nh3], label='Reactants', color='blue')
+ax.bar(products, [amount_h2, amount_n2], label='Products', color='orange')
 
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+ax.set_ylabel('Moles')
+ax.set_title('Ammonia Decomposition')
+ax.legend()
+
+st.pyplot(fig)
