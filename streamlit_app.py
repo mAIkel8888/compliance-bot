@@ -1,34 +1,52 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# App title
-st.title('Ammonia Decomposition to Hydrogen Calculator')
+# Define constants and initial values
+optimum_k_ru_ratio = 0.9
+optimum_ru_loading = 0.03  # 3% wt
+default_temperature = 550  # in Celsius
+default_pressure = 40  # in bar
+default_whsv = 15000  # in mL g^-1 h^-1
 
-# User input for the amount of ammonia
-amount_nh3 = st.number_input('Enter the amount of NH3 (in moles):', min_value=0.0, value=1.0)
+# Title and introduction
+st.title('Ammonia Decomposition Catalyst Performance Calculator')
+st.markdown("""
+This app simulates the performance of a potassium-promoted ruthenium catalyst supported on CaO for ammonia decomposition.
+Please enter the reaction conditions to see the catalytic performance and NH₃ conversion levels.
+""")
 
-# Stoichiometry calculations
-amount_h2 = 3 * amount_nh3  # 2 NH3 produces 3 H2
-amount_n2 = 0.5 * amount_nh3  # 2 NH3 produces 1 N2
+# User input for reaction conditions
+st.sidebar.header('Reaction Conditions')
+temperature = st.sidebar.slider('Temperature (°C)', 250, 550, default_temperature)
+pressure = st.sidebar.slider('Pressure (bar)', 1, 40, default_pressure)
+whsv = st.sidebar.slider('WHSV (mL g^-1 h^-1)', 9000, 30000, default_whsv)
+ru_loading = st.sidebar.slider('Ru Loading (% wt)', 0.1, 5.0, optimum_ru_loading)
 
-# Display the calculated amounts
-st.write(f"Amount of H2 produced: {amount_h2} moles")
-st.write(f"Amount of N2 produced: {amount_n2} moles")
+# Perform calculations (these are placeholders and need to be replaced with actual formulas based on the experiment)
+# For example, a simple conversion calculation based on pressure
+conversion = np.exp(-pressure / 10) * (temperature / 1000)
 
-# Visualizing the reaction
+# Display the calculated conversion rate
+st.header('Catalytic Performance')
+st.write(f"Estimated NH₃ conversion rate at {temperature}°C and {pressure} bar: {conversion:.2f}")
+
+# Visualization
+st.header('Catalytic Performance Visualization')
 fig, ax = plt.subplots()
-
-# Bar chart for reactants and products
-reactants = ['NH3']
-products = ['H2', 'N2']
-amounts = [amount_nh3, amount_h2, amount_n2]
-
-ax.bar(reactants, [amount_nh3], label='Reactants', color='blue')
-ax.bar(products, [amount_h2, amount_n2], label='Products', color='orange')
-
-ax.set_ylabel('Moles')
-ax.set_title('Ammonia Decomposition')
+# Assuming 'conversion_data' is a list of conversion rates calculated based on a range of temperatures and pressures
+# Plot a graph here, for example:
+temperatures = np.linspace(250, 550, 10)  # Dummy temperature data
+conversions = np.exp(-pressure / 10) * (temperatures / 1000)  # Dummy conversion calculations
+ax.plot(temperatures, conversions, label='NH₃ Conversion Rate')
+ax.set_xlabel('Temperature (°C)')
+ax.set_ylabel('Conversion Rate')
 ax.legend()
-
 st.pyplot(fig)
+
+st.markdown("""
+### Kinetic Analysis
+*Note: The actual kinetic analysis would require specific data from the experiment.*
+""")
+
+# This is a basic outline and would need to be filled out with the actual experimental data and calculations.
