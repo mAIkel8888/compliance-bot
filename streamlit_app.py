@@ -1,43 +1,48 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from catalyst_performance import calculate_conversion, calculate_productivity  # hypothetical functions based on paper
 
-st.title('High-Pressure Ammonia Decomposition Simulator')
+# Assuming you have the conversion and productivity formulas from the paper,
+# they should be translated into Python functions like so:
+def calculate_conversion(ru_loading, k_loading, temperature, pressure):
+    # Placeholder - Insert the actual formula for conversion here
+    conversion = ... # Based on ru_loading, k_loading, temperature, pressure
+    return conversion
 
-st.markdown("""
-This application simulates the catalytic performance of potassium-promoted ruthenium on CaO for ammonia decomposition.
-""")
+def calculate_hydrogen_productivity(conversion, ru_loading):
+    # Placeholder - Insert the actual formula for hydrogen productivity here
+    productivity = ... # Based on conversion and ru_loading
+    return productivity
 
-# Inputs for catalyst composition
-st.sidebar.header('Catalyst Composition')
-ru_loading = st.sidebar.slider('Ru Loading (% wt)', 0.1, 10.0, 3.0)
-k_ru_ratio = st.sidebar.slider('K/Ru Atomic Ratio', 0.1, 2.0, 0.9)
+def calculate_TOFs(active_sites, conversion):
+    # Placeholder - Insert the actual formula for TOFs here
+    TOFs = ... # Based on active_sites and conversion
+    return TOFs
 
-# Operating conditions inputs
-st.sidebar.header('Operating Conditions')
+# Define your Streamlit app layout and inputs
+st.title('Ammonia Decomposition Performance Simulator')
+
+# Input fields for Ru and K loadings, temperature, and pressure
+ru_loading = st.sidebar.number_input('Ru Loading (%)', value=3.0, min_value=0.1, max_value=10.0, step=0.1)
+k_loading = st.sidebar.number_input('K Loading (%)', value=10.0, min_value=0.0, max_value=15.0, step=0.1)
+temperature = st.sidebar.slider('Temperature (°C)', 250, 550, 400)
 pressure = st.sidebar.slider('Pressure (bar)', 1, 40, 1)
-temperature = st.sidebar.slider('Temperature (°C)', 250, 550, 550)
-whsv = st.sidebar.slider('WHSV (mL g^-1 h^-1)', 9000, 30000, 9000)
 
-# Perform calculations based on paper's results
-conversion = calculate_conversion(pressure, temperature, whsv, ru_loading, k_ru_ratio)
-productivity = calculate_productivity(conversion, pressure)
+# Perform calculations
+conversion = calculate_conversion(ru_loading, k_loading, temperature, pressure)
+productivity = calculate_hydrogen_productivity(conversion, ru_loading)
+# Assume `active_sites` is obtained from another function based on Ru and K loading
+active_sites = ...
+TOFs = calculate_TOFs(active_sites, conversion)
 
-# Display results of calculations
-st.header('Catalytic Performance Results')
-st.write(f"NH₃ Conversion at {temperature}°C and {pressure} bar: {conversion:.2%}")
-st.write(f"Hydrogen Productivity: {productivity:.2f} mol H₂ per gcat h⁻¹")
+# Display results
+st.write('## Catalytic Performance Results')
+st.write(f'Ammonia Conversion: {conversion:.2f}%')
+st.write(f'Hydrogen Productivity: {productivity:.2f} mol H₂ per mol Ru h⁻¹')
+st.write(f'Turnover Frequencies (TOFs): {TOFs:.2f} s⁻¹')
 
-# Plotting could go here, using matplotlib or another visualization library
+# Add plots for visualization if necessary
 # ...
 
-st.markdown("""
-## Kinetic Analysis
-Reflect on the effect of potassium promotion on the reaction apparent activation energy reduction.
-""")
-
-# Additional kinetic analysis plots could go here
-
-# You would need to define the functions `calculate_conversion` and `calculate_productivity`
-# based on the experimental data and results presented in the paper.
+# Note: The actual conversion, productivity, and TOFs calculations need to be implemented
+# based on the experimental data and formulas from the paper.
