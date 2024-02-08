@@ -1,52 +1,43 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from catalyst_performance import calculate_conversion, calculate_productivity  # hypothetical functions based on paper
 
-# Define constants and initial values
-optimum_k_ru_ratio = 0.9
-optimum_ru_loading = 0.03  # 3% wt
-default_temperature = 550  # in Celsius
-default_pressure = 40  # in bar
-default_whsv = 15000  # in mL g^-1 h^-1
-
-# Title and introduction
-st.title('Ammonia Decomposition Catalyst Performance Calculator')
-st.markdown("""
-This app simulates the performance of a potassium-promoted ruthenium catalyst supported on CaO for ammonia decomposition.
-Please enter the reaction conditions to see the catalytic performance and NH₃ conversion levels.
-""")
-
-# User input for reaction conditions
-st.sidebar.header('Reaction Conditions')
-temperature = st.sidebar.slider('Temperature (°C)', 250, 550, default_temperature)
-pressure = st.sidebar.slider('Pressure (bar)', 1, 40, default_pressure)
-whsv = st.sidebar.slider('WHSV (mL g^-1 h^-1)', 9000, 30000, default_whsv)
-ru_loading = st.sidebar.slider('Ru Loading (% wt)', 0.1, 5.0, optimum_ru_loading)
-
-# Perform calculations (these are placeholders and need to be replaced with actual formulas based on the experiment)
-# For example, a simple conversion calculation based on pressure
-conversion = np.exp(-pressure / 10) * (temperature / 1000)
-
-# Display the calculated conversion rate
-st.header('Catalytic Performance')
-st.write(f"Estimated NH₃ conversion rate at {temperature}°C and {pressure} bar: {conversion:.2f}")
-
-# Visualization
-st.header('Catalytic Performance Visualization')
-fig, ax = plt.subplots()
-# Assuming 'conversion_data' is a list of conversion rates calculated based on a range of temperatures and pressures
-# Plot a graph here, for example:
-temperatures = np.linspace(250, 550, 10)  # Dummy temperature data
-conversions = np.exp(-pressure / 10) * (temperatures / 1000)  # Dummy conversion calculations
-ax.plot(temperatures, conversions, label='NH₃ Conversion Rate')
-ax.set_xlabel('Temperature (°C)')
-ax.set_ylabel('Conversion Rate')
-ax.legend()
-st.pyplot(fig)
+st.title('High-Pressure Ammonia Decomposition Simulator')
 
 st.markdown("""
-### Kinetic Analysis
-*Note: The actual kinetic analysis would require specific data from the experiment.*
+This application simulates the catalytic performance of potassium-promoted ruthenium on CaO for ammonia decomposition.
 """)
 
-# This is a basic outline and would need to be filled out with the actual experimental data and calculations.
+# Inputs for catalyst composition
+st.sidebar.header('Catalyst Composition')
+ru_loading = st.sidebar.slider('Ru Loading (% wt)', 0.1, 10.0, 3.0)
+k_ru_ratio = st.sidebar.slider('K/Ru Atomic Ratio', 0.1, 2.0, 0.9)
+
+# Operating conditions inputs
+st.sidebar.header('Operating Conditions')
+pressure = st.sidebar.slider('Pressure (bar)', 1, 40, 1)
+temperature = st.sidebar.slider('Temperature (°C)', 250, 550, 550)
+whsv = st.sidebar.slider('WHSV (mL g^-1 h^-1)', 9000, 30000, 9000)
+
+# Perform calculations based on paper's results
+conversion = calculate_conversion(pressure, temperature, whsv, ru_loading, k_ru_ratio)
+productivity = calculate_productivity(conversion, pressure)
+
+# Display results of calculations
+st.header('Catalytic Performance Results')
+st.write(f"NH₃ Conversion at {temperature}°C and {pressure} bar: {conversion:.2%}")
+st.write(f"Hydrogen Productivity: {productivity:.2f} mol H₂ per gcat h⁻¹")
+
+# Plotting could go here, using matplotlib or another visualization library
+# ...
+
+st.markdown("""
+## Kinetic Analysis
+Reflect on the effect of potassium promotion on the reaction apparent activation energy reduction.
+""")
+
+# Additional kinetic analysis plots could go here
+
+# You would need to define the functions `calculate_conversion` and `calculate_productivity`
+# based on the experimental data and results presented in the paper.
