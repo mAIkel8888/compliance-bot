@@ -58,12 +58,20 @@ st.write('')
 if QF > 2300:
     st.subheader('Vous avez l\'enveloppe standard de 193 euros.')
     st.write('Pas besoin de venir nous voir :) ')
-elif 1800 < QF <= 2300 :
+elif 2050 < QF <= 2300 :
     st.subheader('Vous avez une enveloppe de 250 euros.')
     st.write('Vous pouvez venir nous voir!! :) ')
     st.write('Nous avons besoin de votre avis d\'imposition pour valider cette enveloppe. ')
-elif 1300 < QF <= 1800:
+elif 1800 < QF <= 2050 :
+    st.subheader('Vous avez une enveloppe de 300 euros.')
+    st.write('Vous pouvez venir nous voir!! :) ')
+    st.write('Nous avons besoin de votre avis d\'imposition pour valider cette enveloppe. ')
+elif 1550 < QF <= 1800:
     st.subheader('Vous avez une enveloppe de 350 euros.')
+    st.write('Vous pouvez venir nous voir!! :) ')
+    st.write('Nous avons besoin de votre avis d\'imposition pour valider cette enveloppe. ')
+elif 1300 < QF <= 1550:
+    st.subheader('Vous avez une enveloppe de 400 euros.')
     st.write('Vous pouvez venir nous voir!! :) ')
     st.write('Nous avons besoin de votre avis d\'imposition pour valider cette enveloppe. ')
 elif QF <= 1300:
