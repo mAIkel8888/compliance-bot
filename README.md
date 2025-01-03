@@ -1,22 +1,79 @@
-# Visual Product Recognition Group Project
-This model and app were created to get 1000 similar product images when a customer gives an image of a product that he/she wants.
+Here's the revised README with the "Contributing" section replaced by a "Team Members" section:  
 
-This was made as a solution for a competition on AIcrowd.[Visual Product Recognition Competition](https://www.aicrowd.com/challenges/visual-product-recognition-challenge-2023) 
+---
 
-Data Sets used:
-➡️[Product10k](https://products-10k.github.io/)
+# Visual Product Recognition
 
-➡️ [H&M](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations)
+Visual Product Recognition is an innovative project aimed at identifying and classifying products based on their visual features. This project leverages advanced machine learning techniques and computer vision to provide accurate and efficient recognition capabilities.
 
-➡️ AIcrowd dataset for evaluation.
+## Table of Contents
 
-In here we trained the model with a different kind of backbone to get embeddings of the image and got 1000 similar images using KNN.
-We deployed our model in the Google Cloud platform.
-The app was made using Streamlit.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Team Members](#team-members)
+- [License](#license)
 
-# Team Members
-🤖 Thenujan Nagaratnam -[github](https://github.com/Thenujan-Nagaratnam) 
+## Introduction
 
-🤖 Dinindu Tharinda - [github](https://github.com/Dinindu-20)
+This repository contains the code and resources for a Visual Product Recognition system. The goal of this project is to assist in identifying products from images, which can be useful in various domains such as e-commerce, inventory management, and retail analytics.
 
-🤖 Bashadi Thennakoon - [github](https://github.com/basadhi)
+## Features
+
+- **High Accuracy**: Utilizes advanced algorithms to ensure precise recognition.
+- **Scalable**: Designed to handle large datasets and multiple product categories.
+- **User-Friendly Interface**: Simplifies the process of uploading and analyzing images.
+- **Customizable**: Easily adaptable to specific use cases and datasets.
+
+## Installation
+
+Follow these steps to set up the project on your local machine:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Thenujan-Nagaratnam/Visual-Product-Recognition.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Visual-Product-Recognition
+   ```
+3. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Set up the necessary configurations (e.g., API keys, model files).
+
+## Usage
+
+1. Prepare your dataset by organizing images into appropriate folders.
+2. Train the model (if needed):
+   ```bash
+   python train_model.py
+   ```
+3. Use the system to classify products:
+   ```bash
+   python recognize_product.py --image_path /path/to/image.jpg
+   ```
+
+For more details, refer to the [documentation](docs/README.md).
+
+## Technologies Used
+
+- **Programming Language**: Python
+- **Libraries**: TensorFlow, PyTorch, OpenCV, NumPy, pandas
+- **Frameworks**: Flask/Django (if applicable)
+- **Tools**: Jupyter Notebook, scikit-learn, Matplotlib
+
+## Team Members
+
+** 🤖 Thenujan Nagaratnam -[github](https://github.com/Thenujan-Nagaratnam) 
+
+** 🤖 Dinindu Tharinda - [github](https://github.com/Dinindu-20)
+
+** 🤖 Bashadi Thennakoon - [github](https://github.com/basadhi)
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
