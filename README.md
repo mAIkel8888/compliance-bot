@@ -1,6 +1,4 @@
-Here's the revised README with the "Contributing" section replaced by a "Team Members" section:  
 
----
 
 # Visual Product Recognition
 
