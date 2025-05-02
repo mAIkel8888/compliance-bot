@@ -15,7 +15,7 @@ import time
 df = pd.DataFrame()
 
 
-st.title('CSE Calcul ASC 2024')
+st.title('CSE Calcul ASC 2025')
 st.write('')
 
 # add some space between photo and instructions
@@ -34,7 +34,7 @@ placeholder_s = st.empty()
 
 # have user input the amount they have for each coin
 
-userRFF = placeholder_c.number_input('Revenu fiscal de reference 2024 (sur les revenus 2023) en euros: ', min_value= 0, value=100000)
+userRFF = placeholder_c.number_input('Revenu fiscal de reference 2025 (sur les revenus 2024) en euros: ', min_value= 0, value=100000)
 userNBPart = placeholder_s.number_input('Nombre de parts ', min_value= 1.,format="%.2f", step=0.5)
 
 
@@ -56,7 +56,7 @@ st.write(f'Votre Quotient Familial {QF:,d} .')
 st.write('')
 
 if QF > 2300:
-    st.subheader('Vous avez l\'enveloppe standard de 193 euros.')
+    st.subheader('Vous avez l\'enveloppe standard de 196 euros.')
     st.write('Pas besoin de venir nous voir :) ')
 elif 2050 < QF <= 2300 :
     st.subheader('Vous avez une enveloppe de 250 euros.')
