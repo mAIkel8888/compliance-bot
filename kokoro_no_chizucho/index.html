@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>こころの地図帳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>こころの地図帳</h1>
+    </header>
+    <div id="qotd-container" style="display: none; padding: 1em; margin: 1em auto; background-color: #fff8e1; border: 1px solid #ffeccc; border-radius: 5px; max-width: 80%; text-align: center;">
+        <h3 style="margin-top: 0;">今日の問いかけ</h3>
+        <p id="qotd-text"></p>
+        <button id="qotd-answer-button">この質問に答える</button>
+    </div>
+    <nav>
+        <ul id="section-navigation">
+            <li><a href="#" data-section-id="past_inventory">過去の棚卸し</a></li>
+            <li><a href="#" data-section-id="emotion_manual">今の感情の取扱説明書</a></li>
+            <li><a href="#" data-section-id="values_layers">価値観の地層を掘る</a></li>
+            <li><a href="#" data-section-id="ideal_life">理想の生活と人間関係</a></li>
+            <li><a href="#" data-section-id="occupational_dna">あなたの職業的DNA</a></li>
+            <li><a href="#" data-section-id="future_choices">明日をつくる選択</a></li>
+            <li><a href="#" data-section-id="answer_history">回答履歴</a></li>
+            <li><a href="#" data-section-id="personality_diagnosis">性格傾向診断</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2 id="current-section-title"></h2>
+        <div id="question-display-area">
+            <!-- Question text will be inserted here by script.js -->
+            <textarea id="answer-input" rows="5" placeholder="ここに回答を入力してください..." style="width: 90%; margin-top: 10px;"></textarea>
+            <button id="save-answer" style="display: block; margin-top: 10px;">回答を保存</button>
+        </div>
+        <div id="navigation-buttons" style="margin-top: 20px; text-align: center;">
+            <button id="prev-question">前の質問</button>
+            <button id="next-question">次の質問</button>
+        </div>
+    </main>
+    <footer>
+        © 2024 あなたの心のアプリ
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
