@@ -1,0 +1,109 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #a2d2ff; /* Light blue */
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+nav {
+    padding: 1em;
+    background-color: #bde0fe; /* Slightly different blue */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #00509d; /* Darker blue for links */
+    display: block;
+    padding: 0.5em 0;
+}
+
+nav li a:hover {
+    background-color: #cce7ff;
+}
+
+main {
+    padding: 1em;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    font-size: 0.9em;
+    color: #666;
+    background-color: #e9ecef;
+    margin-top: 2em;
+}
+
+/* Added styles for Answer History */
+.history-item {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #e9ecef; /* Using footer background for consistency */
+    border-radius: 4px;
+    border: 1px solid #ddd; /* Added a light border */
+}
+
+.history-item h3 { /* Styling for section titles within history */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #00509d; /* Darker blue, like nav links */
+}
+
+.history-question {
+    font-weight: normal; /* Changed from bold to normal to rely on <strong> */
+    margin-bottom: 0.25em;
+    color: #333;
+}
+
+.history-answer {
+    margin-left: 1em;
+    white-space: pre-wrap; /* Respects newlines from textarea */
+    color: #555; /* Slightly lighter than question text */
+    background-color: #fff; /* White background for the answer block */
+    padding: 0.5em;
+    border-radius: 3px;
+}
+
+/* Styles for Share Button */
+#share-button {
+    margin-left: 10px; /* If next to save button */
+    background-color: #5cb85c; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Adjust padding to match save button if any */
+    border-radius: 4px;
+    cursor: pointer;
+    /* Ensure it aligns with save button if they are inline-block */
+    vertical-align: top; 
+}
+
+#share-button:hover {
+    background-color: #4cae4c;
+}
+
+/* Adjust save button if needed to match share button styling */
+#save-answer {
+    padding: 8px 12px; /* Example: match share button padding */
+    border: 1px solid #ccc; /* Example: add border if not present */
+    background-color: #f0f0f0; /* Example: light gray background */
+    cursor: pointer;
+    border-radius: 4px; /* Example: match border radius */
+    vertical-align: top;
+}
+#save-answer:hover {
+    background-color: #e0e0e0;
+}
