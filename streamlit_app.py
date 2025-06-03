@@ -7,12 +7,18 @@ st.title("Material Stock Manager")
 if 'materials' not in st.session_state:
     st.session_state.materials = {}
 
+MATERIAL_OPTIONS = [
+    "Piedra Caliza",
+    "Durmientes de Madera",
+    "Malla de Acero",
+]
+
 st.header("Add a new material")
 with st.form("add_material"):
-    name = st.text_input("Material name")
+    name = st.selectbox("Material", MATERIAL_OPTIONS)
     qty = st.number_input("Initial quantity", min_value=0, step=1, value=0)
     submitted = st.form_submit_button("Add/Update")
-    if submitted and name:
+    if submitted:
         current = st.session_state.materials.get(name, 0)
         st.session_state.materials[name] = current + int(qty)
 
