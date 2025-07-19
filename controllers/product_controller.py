@@ -6,9 +6,9 @@ def create_product(name, category_id):
     try:
         cursor.execute("INSERT INTO products (name, category_id) VALUES (?, ?)", (name, category_id))
         conn.commit()
-        return True
+        return cursor.lastrowid
     except:
-        return False
+        return None
     finally:
         conn.close()
 

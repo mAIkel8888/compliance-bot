@@ -6,9 +6,9 @@ def create_category(name):
     try:
         cursor.execute("INSERT INTO categories (name) VALUES (?)", (name,))
         conn.commit()
-        return True
+        return cursor.lastrowid
     except:
-        return False
+        return None
     finally:
         conn.close()
 

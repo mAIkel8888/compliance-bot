@@ -20,7 +20,7 @@ def main():
         st.header("Categorias")
         category_name = st.text_input("Nova Categoria")
         if st.button("Adicionar Categoria"):
-            if create_category(category_name):
+            if create_category(category_name) is not None:
                 st.success("Categoria adicionada com sucesso!")
             else:
                 st.error("Erro ao adicionar categoria.")
@@ -30,7 +30,7 @@ def main():
         categories = get_categories()
         category_id = st.selectbox("Categoria", [c['id'] for c in categories], format_func=lambda x: [c['name'] for c in categories if c['id'] == x][0])
         if st.button("Adicionar Produto"):
-            if create_product(product_name, category_id):
+            if create_product(product_name, category_id) is not None:
                 st.success("Produto adicionado com sucesso!")
             else:
                 st.error("Erro ao adicionar produto.")
@@ -128,7 +128,7 @@ def main():
             username = st.text_input("Usuário")
             password = st.text_input("Senha", type="password")
             if st.button("Cadastrar"):
-                if create_user(username, password):
+                if create_user(username, password) is not None:
                     st.success("Usuário criado com sucesso! Faça o login.")
                 else:
                     st.error("Este nome de usuário já existe.")

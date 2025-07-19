@@ -11,9 +11,9 @@ def create_user(username, password):
             (username, generate_password_hash(password))
         )
         conn.commit()
-        return True
+        return cursor.lastrowid
     except sqlite3.IntegrityError:
-        return False
+        return None
     finally:
         conn.close()
 
