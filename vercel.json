@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "mount-barker-counselling",
+    "alias": ["mount-barker-counselling"],
+    "builds": [
+      { "src": "*.html", "use": "@vercel/static" },
+      { "src": "*.css", "use": "@vercel/static" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/$1" }
+    ]
+}
