@@ -1,6 +1,20 @@
-# Welcome to Streamlit!
+# Aplicación de Espiral Interactiva con Streamlit
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire. :heart:
+Esta es una simple aplicación web creada con [Streamlit](https://streamlit.io/) que genera y muestra una espiral.
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+## Características
+
+- **Interactiva**: Puedes usar los deslizadores en la interfaz para cambiar el número de puntos y el número de vueltas de la espiral en tiempo real.
+- **Visualización**: La espiral se dibuja usando la librería [Altair](https://altair-viz.github.io/).
+
+## Cómo ejecutar la aplicación
+
+1. Asegúrate de tener Python instalado.
+2. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Ejecuta la aplicación:
+   ```bash
+   streamlit run streamlit_app.py
+   ```
